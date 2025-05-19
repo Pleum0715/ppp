@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ก็ลองดู</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(145deg, #0c0f1a, #1b1f2b);
+  color: #f1f5f9;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Center Title */
+h1 {
+  font-size: 2.5rem;
+  margin: 2rem 0 1rem;
+  color: #e0e7ff;
+  text-shadow: 0 0 5px #60a5fa;
+  text-align: center;
+  width: 100%;
+}
+
+/* Stage Container */
+.stage {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(6px);
+  border: 2px solid #60a5fa;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 0 20px #60a5fa44;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Input & Button */
+input[type="text"] {
+  width: 80%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  background-color: #1e293b;
+  color: #f1f5f9;
+  box-shadow: inset 0 0 5px #3b82f6;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+button {
+  background-color: #3b82f6;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: 0.3s;
+  font-weight: bold;
+  box-shadow: 0 0 10px #3b82f6aa;
+}
+
+button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+.result {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.clue-log {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #facc15;
+}
+
+/* Hidden Stage */
+.stage-hidden {
+  display: none;
+}
+
+/* Hamburger Icon */
+#hamburger {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  color: #60a5fa;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Side Menu */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100%;
+  background-color: #0f172a;
+  border-right: 2px solid #3b82f6;
+  padding-top: 4rem;
+  transition: transform 0.4s ease;
+  z-index: 999;
+  transform: translateX(-250px);
+}
+
+#sideMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sideMenu li {
+  padding: 1.2rem;
+  border-bottom: 1px solid #334155;
+  color: #f1f5f9;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+}
+
+#sideMenu li:hover {
+  background-color: #1e293b;
+  color: #93c5fd;
+  letter-spacing: 1px;
+}
+
+/* Toggle show/hide */
+#sideMenu.show {
+  transform: translateX(0);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
+
+  .stage {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  #hamburger {
+    font-size: 1.8rem;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div id="hamburger" onclick="toggleMenu()">☰</div>
+
+  <div id="sideMenu" class="hidden">
+    <ul>
+      <li onclick="goToStage(1)">ด่านที่ 1 ง่ายมาก</li>
+      <li onclick="goToStage(2)">ด่านที่ 2 ง่าย</li>
+      <li onclick="goToStage(3)">ด่านที่ 3 ปานกลาง</li>
+      <li onclick="goToStage(4)">ด่านที่ 4 เริ่มยาก</li>
+      <li onclick="goToStage(5)">ด่านที่ 5 ยาก</li>
+      <li onclick="goToStage(6)">ด่านที่ 6 ลองดู</li>
+    </ul>
+  </div>
+
+  <h1>🔍สืบจนตาแฉะ</h1>
+
+  <div id="stage1" class="stage">
+    <h2>ด่านที่ 1</h2>
+    <p>เมื่อเราตัดสิ่งที่แย่ในชีวิตออกไปมักจะเจอสิ่งที่ใช่สำหรับเรา : <code>"0X1Q1A0Z1B1X0C1D1E0F1G0H0I0J1K0L0M0N0O1P1Q0R0S1T0U0V1W0X0Y0Z
+1010G1H1I0J0K0L0M001X0Z0W0A0D1G1Q0Z1T0O1U1P0Z
+"</code></p>
+    <input type="text" id="answer1" placeholder="ใส่คำตอบของคุณ..."/>
+    <button onclick="checkAnswer(1)">ตรวจสอบ</button>
+    <div id="result1" class="result"></div>
+    <div id="clueLog1" class="clue-log"></div>
+  </div>
+
+  <div id="stage2" class="stage stage-hidden">
+    <h2>ด่านที่ 2</h2>
+    <p>1 สัปดาห์มี 7 วันรู้สึกว่าชอบ 4 วันส่วน 3 วันที่เหลือจะแย่มากเลย :
+        <code>011010101001110100011000011011010111100010011010100011100100101011
+        011010011010101010011</code>
+</p>
+    <input type="text" id="answer2" placeholder="ใส่คำตอบของคุณ..."/>
+    <button onclick="checkAnswer(2)">ตรวจสอบ</button>
+    <div id="result2" class="result"></div>
+    <div id="clueLog2" class="clue-log"></div>
+  </div>
+
+  <div id="stage3" class="stage stage-hidden">
+    <h2>ด่านที่ 3</h2>
+    <p>(a × x + b) mod 26 , a = 5, b = 8 , A = 0, B = 1, ..., Z = 25
+        <code>"ZGQXIWVMIW"</code> </p>
+    <input type="text" id="answer3" placeholder="ใส่คำตอบของคุณ..."/>
+    <button onclick="checkAnswer(3)">ตรวจสอบ</button>
+    <div id="result3" class="result"></div>
+    <div id="clueLog3" class="clue-log"></div>
+  </div>
+
+  <div id="stage4" class="stage stage-hidden">
+    <h2>ด่านที่ 4</h2>
+    <p>บางครั้งการที่เราเป็นคนพอดีก็อาจจะทำให้ได้สิ่งดีๆนะ จากคนยุค 90s:
+        <code>555 444 666 66  
+        55 444 66 4  
+        1 0 # 999</code>
+        </p>
+    <input type="text" id="answer4" placeholder="ใส่คำตอบของคุณ..."/>
+    <button onclick="checkAnswer(4)">ตรวจสอบ</button>
+    <div id="result4" class="result"></div>
+    <div id="clueLog4" class="clue-log"></div>
+  </div>
+
+  <div id="stage5" class="stage stage-hidden">
+    <h2>ด่านที่ 5</h2>
+    <p>โอ้แอปเปิ้ล:
+<code>
+[1] m = 10, a = 10.3  
+[2] m = 3,  a = 32.33  
+[3] m = 5,  a = 21.8  
+[4] m = 4,  a = 25  
+[5] m = 2,  a = 49.5  
+[6] m = 2,  a = 53  
+[7] m = 1,  a = 101  
+[8] m = 2,  a = 50.5  
+[9] m = 2,  a = 58.5</code> 
+        </p>
+    <input type="text" id="answer5" placeholder="ใส่คำตอบของคุณ..."/>
+    <button onclick="checkAnswer(5)">ตรวจสอบ</button>
+    <div id="result5" class="result"></div>
+    <div id="clueLog5" class="clue-log"></div>
+  </div>
+
+  <div id="stage6" class="stage stage-hidden">
+    <h2>ด่านที่ 6</h2>
+    <p>หมดมุขแล้ว<code>U3RhcnQgd2l0aCBFPTIuNSBjYWxjdWxhdGUgdGhlIGZyZXF1ZW5jeSBvZiBhbiBhc3N1bXB0aW9uIHdpdGggbT0xIGFuZCBsPTAgLiBUaGVuIGNvbnZlcnQgdGhlIGFuc3dlciB0byBhc2NpaSwgdGhlbiBiYXNlNjQgdGhhdC4g
+</code></p>
+    <input type="text" id="answer6" placeholder="ใส่คำตอบของคุณ..."/>
+    <button onclick="checkAnswer(6)">ตรวจสอบ</button>
+    <div id="result6" class="result"></div>
+    <div id="clueLog6" class="clue-log"></div>
+  </div>
+
+  <script>
+    const answers = {
+      1: "kod ja ez",
+      2: "deknoi",
+      3: "TUMDAINGAI",
+      4: "lionking",
+      5: "gameclear",
+      6: "goodskill"
+    };
+
+    function checkAnswer(stage) {
+      const input = document.getElementById(`answer${stage}`).value.trim().toLowerCase();
+      const result = document.getElementById(`result${stage}`);
+      const clueLog = document.getElementById(`clueLog${stage}`);
+      if (input === answers[stage]) {
+        result.innerText = '🟢 คำตอบถูกต้อง!';
+        clueLog.innerText = `✔️ ด่านที่ ${stage} ผ่านแล้ว`;
+      } else {
+        result.innerText = '❌ คำตอบไม่ถูก ลองใหม่!';
+      }
+    }
+
+    function toggleMenu() {
+  document.getElementById('sideMenu').classList.toggle('show');
+}
+
+
+    function goToStage(stage) {
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById(`stage${i}`).classList.add('stage-hidden');
+      }
+      document.getElementById(`stage${stage}`).classList.remove('stage-hidden');
+      toggleMenu();
+    }
+  </script>
+</body>
+</html>
